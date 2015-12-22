@@ -1,0 +1,9 @@
+{
+  "name": "Russian-Sanskrit Dictionary",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular-bootstrap": "0.x",
+    "bootstrap": "3.x",
+    "octicons": "*"
+  }
+}

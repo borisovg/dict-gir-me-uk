@@ -1,0 +1,134 @@
+//@import "../lib/octicons/octicons/octicons.less";
+//@octicons-font-path: "../lib/octicons/octicons";
+
+@font-face {
+	font-family: CharisSILW;
+	src: url('CharisSIL-R.woff') format('woff');
+}
+
+@font-face {
+    font-family: CharisSILW;
+    font-weight: bold; 
+    src: url('CharisSIL-B.woff') format('woff');
+} 
+
+@font-face {
+	font-family: CharisSIL_FS;
+	src: url('./fonts/charissil-r-webfont.woff2') format('woff2'),
+	    url('./fonts/charissil-r-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: CharisSIL_FS;
+    font-weight: bold; 
+	src: url('./fonts/charissil-b-webfont.woff2') format('woff2'),
+	    url('./fonts/charissil-b-webfont.woff') format('woff');
+} 
+
+@font-face {
+    font-family: Izhitsa;
+    src: url('./fonts/ttf/IzhitsaNormal.ttf') format('truetype');
+}
+
+//body {
+//    background-color: #F8F8F8;
+//}
+
+#filterWords {
+    table {
+        border-top: 1px solid #DDD;
+        border-bottom: 1px solid #DDD;
+    }
+
+    th, td {
+        border: 0;
+        text-align: center;
+    }
+
+    td {
+        font-size: 80%;
+        padding: 0 0.5em;
+    }
+    
+    th {
+        font-size: 80%;
+    }
+}
+
+#score {
+    label {
+        margin: 0 0.5em;
+    }
+}
+
+h1.word {
+    font-size: 150%;
+}
+
+table.word {
+    border-collapse: collapse;
+    width: 100%;
+
+    td {
+        font-size: 120%;
+        min-width: 20%;
+        padding: 0.6em 0;
+
+        &.devanagari {
+            font-weight: bold;
+            font-size: 160%;
+            padding: 0;
+        }
+
+        &.left-border {
+            border-left: 1px solid;
+            padding-left: 1em;
+        }
+    }
+}
+
+.edit-form {
+    background-color: #DFDFDF;
+    margin-top: -25px;
+    padding-top: 25px;
+
+    label {
+        color: #888;
+        font-size: 90%;
+        font-weight: normal;
+    }
+
+    input[type='checkbox'] {
+        margin: 0;
+        width: auto;
+    }
+
+    textarea {
+        overflow: hidden;
+    }
+}
+
+.devanagari {
+    font-family: CharisSIL_FS;
+}
+
+.cyrillic {
+    font-family: Izhitsa;
+}
+
+.print, .ng-cloak {
+    display: none;
+}
+
+ul.buttons-vertical {
+    list-style: none;
+    padding: 0;
+
+    li {
+        margin-bottom: 0.5em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

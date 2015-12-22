@@ -1,0 +1,8 @@
+bin/
+composer.lock
+config/local_config.php
+data/
+lib/vendor/
+local/
+public/css/*.css
+public/lib/
