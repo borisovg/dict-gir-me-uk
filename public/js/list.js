@@ -9,7 +9,7 @@ angular.module('listOfWords', ['svc.sub'])
 
         function _get () {
             var k, o = {};
-            
+
             for (k in filters) {
                 if (filters.hasOwnProperty(k)) {
                     o[k] = filters[k];
@@ -56,7 +56,7 @@ angular.module('listOfWords', ['svc.sub'])
         $http.get('/api/letters').then(
             function (res) {
                 var collator = new Intl.Collator('ru');
-    
+
                 letters = res.data;
 
                 letters = letters.map(function (v) {
@@ -182,7 +182,7 @@ angular.module('listOfWords', ['svc.sub'])
                 $scope.letters = letters;
             });
         });
-        
+
         listSvc.subscribe(function (list) {
             $scope.$applyAsync(function () {
                 $scope.xids = list.map(function (o) {
@@ -199,7 +199,7 @@ angular.module('listOfWords', ['svc.sub'])
 
             if (i > -1) {
                 $scope.filters.scores.splice(i);
-            
+
             } else {
                 $scope.filters.scores.push(s);
             }
@@ -209,17 +209,17 @@ angular.module('listOfWords', ['svc.sub'])
             filterSvc.update(filters);
             listSvc.update(filters);
         }, true);
-        
+
         $scope.$watch('lang', function (lang) {
             langSvc.set(lang);
         }, true);
     }])
-    
+
     .controller('wordsCtrl', ['$scope', 'listSvc', function ($scope, listSvc) {
         'use strict';
 
         var collator = new Intl.Collator('ru');
-        
+
         $scope.letters = {};
         $scope.words = {};
         $scope.wordCount = 0;
@@ -236,7 +236,7 @@ angular.module('listOfWords', ['svc.sub'])
 
         function _to_columns (o) {
             var a, c, i, j, k, max, cols = 3;
-            
+
             for (k in o) {
                 if (o.hasOwnProperty(k)) {
                     a = [[]];
@@ -259,7 +259,7 @@ angular.module('listOfWords', ['svc.sub'])
                 }
             }
         }
-        
+
         listSvc.subscribe(function (list) {
             var i, l, o;
 
@@ -273,13 +273,13 @@ angular.module('listOfWords', ['svc.sub'])
 
             _sort_words(o);
             _to_columns(o);
-            
+
             $scope.$applyAsync(function () {
                 $scope.letters = Object.keys(o).sort(collator.compare);
                 $scope.words = o;
             });
         });
-        
+
         listSvc.subscribe(function (list) {
             $scope.$applyAsync(function () {
                 $scope.wordCount = list.length;

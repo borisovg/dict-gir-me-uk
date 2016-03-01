@@ -72,7 +72,7 @@ angular.module('word', ['svc.sub'])
             }
         };
     }])
-    
+
     .directive('xlang', ['langSvc', function (langSvc) {
         'use strict';
 
@@ -85,7 +85,7 @@ angular.module('word', ['svc.sub'])
             }
         };
     }])
-    
+
     .directive('xfile', ['fileSvc', function (fileSvc) {
         'use strict';
 
@@ -106,7 +106,7 @@ angular.module('word', ['svc.sub'])
             restrict: 'A',
             link: function (scope, el) {
                 var href = el[0].href;
-                
+
                 langSvc.subscribe(function (lang) {
                     if (href.indexOf(lang) > -1) {
                         $(el).tab('show');

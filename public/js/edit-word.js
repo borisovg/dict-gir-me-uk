@@ -31,7 +31,7 @@ angular.module('edit-word', [])
                 $rootScope.$broadcast('error', err.data);
             }
         );
-        
+
         return {
             subscribe: function (callback) {
                 subSvc.add('classes', callback);
@@ -54,7 +54,7 @@ angular.module('edit-word', [])
                 $rootScope.$broadcast('error', err.data);
             }
         );
-        
+
         return {
             subscribe: function (callback) {
                 subSvc.add('genders', callback);
@@ -87,7 +87,7 @@ angular.module('edit-word', [])
             }
         };
     })
-    
+
     .service('typeSvc', ['$rootScope', '$http', 'subSvc', function ($rootScope, $http, subSvc) {
         'use strict';
 
@@ -102,7 +102,7 @@ angular.module('edit-word', [])
                 $rootScope.$broadcast('error', err.data);
             }
         );
-        
+
         return {
             subscribe: function (callback) {
                 subSvc.add('types', callback);
@@ -127,7 +127,7 @@ angular.module('edit-word', [])
                 $rootScope.$broadcast('error', err.data);
             }
         );
-        
+
         return {
             subscribe: function (callback) {
                 subSvc.add('word', callback);
@@ -137,7 +137,7 @@ angular.module('edit-word', [])
             update: function (k, v, callback) {
                 $http.post(uri, {key: k, val: v}).then(
                     function (res) {
-                        callback(false, res.data);    
+                        callback(false, res.data);
                     },
                     function (err) {
                         $rootScope.$broadcast('error', err.data);
@@ -147,7 +147,7 @@ angular.module('edit-word', [])
             }
         };
     }])
-    
+
     .directive('formGroup', function () {
         'use strict';
 
@@ -214,7 +214,7 @@ angular.module('edit-word', [])
             restrict: 'C',
             link: function (scope, el) {
                 $(':text, textarea', el).each(function () {
-                    $(this).blur(function() { 
+                    $(this).blur(function() {
                         scope.lastInput = this;
                         scope.lastInputCursorPosition = this.selectionStart;
                     });
@@ -250,9 +250,9 @@ angular.module('edit-word', [])
                             if (err) {
                                 m = $('#errorModal');
                                 v = cache[name];
-                                
+
                                 p.addClass('has-error');
-                                
+
                                 if (typeof err === 'object') {
                                     $('.message', m).text(JSON.stringify(err, null, 2));
 
@@ -267,7 +267,7 @@ angular.module('edit-word', [])
                                     $(ev.target).select();
                                     cache[name] = v;
                                 });
-                            
+
                             } else {
                                p.removeClass('has-error');
                             }
@@ -283,7 +283,7 @@ angular.module('edit-word', [])
                 $(':checkbox').each(function() {
                     $(this).change(_update);
                 });
-                
+
                 $('select').each(function() {
                     $(this).focus(_cache);
                     $(this).change(function (ev) {
@@ -356,7 +356,7 @@ angular.module('edit-word', [])
                 $scope.lastInput.selectionStart = $scope.lastInputCursorPosition + c.length;
                 $scope.lastInput.selectionEnd = $scope.lastInputCursorPosition + c.length;
             });
-            
+
             $($scope.lastInput).focus();
        };
 
@@ -371,7 +371,7 @@ angular.module('edit-word', [])
                 $scope.genders = list;
             });
         });
-        
+
         typeSvc.subscribe(function (list) {
             $scope.$applyAsync(function () {
                 $scope.types = list;
