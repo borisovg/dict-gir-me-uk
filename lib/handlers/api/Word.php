@@ -30,10 +30,12 @@ class Word extends Base {
 
         $data = json_decode(file_get_contents('php://input'), true);
 
-        foreach (['key', 'val'] as $k) {
-            if (!isset ($data[$k])) {
-                parent::json_error(400, 'Bad Request');
-            }
+        if (!is_array($data) || !isset ($data['key'])) {
+            parent::json_error(400, 'Bad Request', $data);
+        }
+
+        if (!isset ($data['val'])) {
+            $data['val'] = false;
         }
 
         $m = new Model();
