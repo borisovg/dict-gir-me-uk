@@ -149,7 +149,31 @@ class Model {
         return $r;
     }
 
-    function update_word($id, $col, $val) {
+    function new_word ($a) {
+        $log = new Logger();
+
+        ob_start();
+
+        try {
+            $id = $this->db->insert('data', $a);
+            $r = ['result' => ['id' => $id]];
+
+        } catch (Exception $e) {
+            $r = ['error' => ['code' => 500, 'message' => $e]];
+        }
+
+        if ($output = ob_get_contents()) {
+            $r['output'] = $output;
+        }
+
+        ob_end_clean();
+
+        $log->info(['action' => 'new', 'id' => $id, 'data' => $a]);
+
+        return $r;
+    }
+
+    function update_word ($id, $col, $val) {
         if (!$this->check_column($col, 'data')) {
             return ['error' => ['code' => 400, 'message' => 'Bad Key', 'data' => ['key' => $col]]];
         }

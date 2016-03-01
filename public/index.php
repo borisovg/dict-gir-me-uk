@@ -29,6 +29,7 @@ try {
         '/log/' => 'handlers\Log',
         '/login/' => 'handlers\Login',
         '/logout/' => 'handlers\Logout',
+        '/new/' => 'handlers\NewWord',
         '/search/' => 'handlers\Search',
         '/words/(\d+)/' => 'handlers\Word',
         '/words/(\d+)/edit/' => 'handlers\EditWord',
