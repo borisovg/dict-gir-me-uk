@@ -59,7 +59,7 @@ class Model {
         }
 
         // fix missing period
-        foreach(array ('comments_eng', 'comments_rus', 'notes_r', 'other_lang', 'cognates', 'cognates_r') as $k) {
+        foreach(array ('comments_eng', 'comments_rus', 'other_lang', 'cognates', 'cognates_r', 'source', 'source_r') as $k) {
             if ($w[$k] && substr($w[$k], -1, 1) !== '.') {
                 $w[$k] .= '.';
             }
