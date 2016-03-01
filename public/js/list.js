@@ -149,11 +149,12 @@ angular.module('listOfWords', ['svc.sub'])
         $scope.$on('error', function (ev, err) {
             $scope.$applyAsync(function () {
                 if (typeof err === 'object') {
-                    if (err.code === 401) {
-                        return document.location.reload();
+                    if (err.error.code === 401) {
+                        document.location.href = '/login/';
+                        return;
                     }
 
-                    $scope.error = JSON.stringify(err, null, 2);
+                    $scope.error = JSON.stringify(err.error, null, 2);
 
                 } else {
                     $scope.error = err;
