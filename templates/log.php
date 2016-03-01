@@ -23,10 +23,10 @@ $h .= '<div class="container-fluid logs">';
 if (!empty ($LOG_DATA)) {
     foreach ($LOG_DATA as &$r) {
         if ($r['Level'] === 'WARN') {
-            $h .= '<p class="warning">';
+            $h .= '<p class="bg-warning">';
 
         } else if ($r['Level'] === 'ERROR') {
-            $h .= '<p class="danger">';
+            $h .= '<p class="bg-danger">';
 
         } else {
             $h .= '<p>';
