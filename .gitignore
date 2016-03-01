@@ -1,3 +1,4 @@
+*.swp
 bin/
 composer.lock
 config/local_config.php
