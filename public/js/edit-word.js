@@ -171,19 +171,53 @@ angular.module('edit-word', [])
         'use strict';
 
         function _resize (el) {
-            el[0].style.height = 'auto';
-            el[0].style.height = el[0].scrollHeight + 4 + 'px';
+            el.style.height = 'auto';
+            el.style.height = el.scrollHeight + 4 + 'px';
         }
 
         return {
             restrict: 'E',
             link: function (scope, el) {
                 el.on('keydown', function () {
-                    _resize(el);
+                    scope.$applyAsync(function () {
+                        _resize(el[0]);
+                    });
                 });
 
                 scope.$watch('word', function () {
-                    _resize(el);
+                    scope.$applyAsync(function () {
+                        _resize(el[0]);
+                    });
+                });
+            }
+        };
+    })
+
+    .directive('toggleKeyboard', ['$rootScope', function ($rootScope) {
+        'use strict';
+
+        return {
+            restrict: 'C',
+            link: function (scope, el) {
+                $(el).click(function () {
+                    $(el).blur();
+                    $rootScope.$broadcast('toggle-keyboard');
+                });
+            }
+        };
+    }])
+
+    .directive('insertChar', function () {
+        'use strict';
+
+        return {
+            restrict: 'C',
+            link: function (scope, el) {
+                $(':text, textarea', el).each(function () {
+                    $(this).blur(function() { 
+                        scope.lastInput = this;
+                        scope.lastInputCursorPosition = this.selectionStart;
+                    });
                 });
             }
         };
@@ -193,8 +227,8 @@ angular.module('edit-word', [])
         'use strict';
 
         return {
-            restrict: 'A',
-            link: function (scope, el) {
+            restrict: 'C',
+            link: function (scope) {
                 var cache = {};
 
                 function _cache (ev) {
@@ -211,7 +245,7 @@ angular.module('edit-word', [])
                     if (cache[name] !== value) {
                         wordSvc.update(name, value, function (err) {
                             var m, v,
-                                p = angular.element(ev.target).parent();
+                                p = $(ev.target).parent();
 
                             if (err) {
                                 m = $('#errorModal');
@@ -230,7 +264,7 @@ angular.module('edit-word', [])
 
                                 m.on('hidden.bs.modal', function () {
                                     m.off('hidden.bs.modal');
-                                    ev.target.select();
+                                    $(ev.target).select();
                                     cache[name] = v;
                                 });
                             
@@ -241,29 +275,21 @@ angular.module('edit-word', [])
                     }
                 }
 
-                angular.forEach(angular.element(el).find('input'), function (el) {
-                    var type = el.type;
+                $(':text, textarea').each(function() {
+                    $(this).focus(_cache);
+                    $(this).blur(_update);
+                });
 
-                    if (type === 'text') {
-                        el.onfocus = _cache; 
-                        el.onblur = _update; 
-
-                    } else if (type === 'checkbox') {
-                        el.onchange = _update;
-                    }
+                $(':checkbox').each(function() {
+                    $(this).change(_update);
                 });
                 
-                angular.forEach(angular.element(el).find('select'), function (el) {
-                    el.onfocus = _cache; 
-                    el.onchange = function (ev) {
-                        _update(ev); 
-                        _cache(ev); 
-                    };
-                });
-                
-                angular.forEach(angular.element(el).find('textarea'), function (el) {
-                    el.onfocus = _cache; 
-                    el.onblur = _update; 
+                $('select').each(function() {
+                    $(this).focus(_cache);
+                    $(this).change(function (ev) {
+                        _update(ev);
+                        _cache(ev);
+                    });
                 });
             }
         };
@@ -271,6 +297,68 @@ angular.module('edit-word', [])
 
     .controller('editWordCtrl', ['$scope', 'classSvc', 'genderSvc', 'typeSvc', 'wordSvc', function ($scope, classSvc, genderSvc, typeSvc, wordSvc) {
         'use strict';
+
+        $scope.showKeyboard = false;
+        $scope.lastInput = false;
+
+        $scope.symbols = {
+            Russian: {
+                а: ['а́', 'а̀', 'а̋', 'а̏'],
+                е: ['е́', 'ѐ', 'е̋', 'е̏'],
+                и: ['и́', 'ѝ', 'и̋', 'и̏'],
+                о: ['о́', 'о̀', 'о̋', 'о̏'],
+                у: ['у́', 'у̀', 'ӳ', 'у̏'],
+                э: ['э́', 'э̀'],
+                ы: ['ы́']
+            },
+            Latin: {
+                a: ['á', 'à', 'ă', 'ắ', 'ā', 'ā́', 'ä', 'ą', 'ą́', 'a̋', 'ȁ', 'a͂'],
+                e: ['é', 'è', 'ĕ', 'ė', 'Ė', 'ė͂', 'ė́', 'ė̀', 'ē', 'ḗ', 'ë', 'ę', 'ę́', 'e̋', 'ȅ', 'e͂', 'ǝ'],
+                i: ['í', 'ì', 'ĭ', 'ī', 'ï', 'į', 'i̋', 'ȉ', 'i͂'],
+                o: ['ó', 'ò', 'ŏ', 'ō', 'ṓ', 'ö', 'ǫ', 'ǫ́', 'ő', 'ȍ', 'o͂'],
+                u: ['ú', 'ù', 'ŭ', 'ū', 'ū́', 'ü', 'ų', 'ų́', 'ű', 'ȕ', 'u͂'],
+                y: ['ý', 'ỳ', 'y̋', 'y̏'],
+                æ: ['æ', 'Æ'],
+                c: ['c̀', 'ć', 'č', 'Č'],
+                d: ['ḍ', 'ð'],
+                h: ['ḥ', 'h̯'],
+                j: ['ǰ', 'ɣ'],
+                l: ['ḷ', 'ḹ', 'l̥', 'l̥'],
+                m: ['m', 'ṁ', 'm̥'],
+                n: ['ñ', 'ṇ', 'n̥'],
+                r: ['ř', 'ŕ', 'ṛ', 'ṝ', 'r̥', 'r̃'],
+                s: ['š', 'ś', 'ṣ', 'Š', 'Ś'],
+                t: ['ṭ'],
+                x: ['x̣', 'ẋ'],
+                z: ['ž', 'Ž'],
+                '#': ['ʷ', 'ʰ', 'ʲ', '‘', '’', '“', '”', '#', '/', '<', '>', '|', '«', '»']
+            }
+        };
+
+        $scope.show_group = function (letter) {
+            $scope.showSymbolGroup = letter;
+        };
+
+        $scope.insert_char = function (c) {
+            var before, after, text;
+
+            if (!$scope.lastInput) {
+                return;
+            }
+
+            $scope.$applyAsync(function () {
+                text = $scope.lastInput.value;
+                before = text.substring(0, $scope.lastInputCursorPosition);
+                after = text.substring($scope.lastInputCursorPosition, text.length);
+
+                $scope.word[$scope.lastInput.name] = before + c + after;
+
+                $scope.lastInput.selectionStart = $scope.lastInputCursorPosition + c.length;
+                $scope.lastInput.selectionEnd = $scope.lastInputCursorPosition + c.length;
+            });
+            
+            $($scope.lastInput).focus();
+       };
 
         classSvc.subscribe(function (list) {
             $scope.$applyAsync(function () {
@@ -296,10 +384,16 @@ angular.module('edit-word', [])
                 $scope.$broadcast('update');
             });
         });
+
+        $scope.$on('toggle-keyboard', function () {
+            $scope.$applyAsync(function () {
+                $scope.showKeyboard = ($scope.showKeyboard) ? false : true;
+            });
+        });
     }])
 ;
 
-angular.element(document).ready(function () {
+$(document).ready(function () {
     'use strict';
     angular.bootstrap(document.body, ['edit-word']);
 });

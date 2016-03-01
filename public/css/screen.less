@@ -30,9 +30,10 @@
     src: url('./fonts/ttf/IzhitsaNormal.ttf') format('truetype');
 }
 
-//body {
-//    background-color: #F8F8F8;
-//}
+body {
+    //background-color: #F8F8F8;
+    margin-top: 75px;
+}
 
 #filterWords {
     table {
@@ -106,6 +107,10 @@ table.word {
     textarea {
         overflow: hidden;
     }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
 }
 
 .devanagari {
@@ -131,6 +136,57 @@ ul.buttons-vertical {
             margin-bottom: 0;
         }
     }
+}
+
+img.icon {
+    height: 1em;
+}
+
+.keyboard {
+    &.ng-cloak {
+        display: none;
+    }
+
+    //background-color: #f8f8f8;
+    background-color: #dfdfdf;
+    border: 1px solid #afafaf;
+    display: table;
+    margin: 0 auto;
+    //padding-top: 0.5em;
+    padding-bottom: 1em;
+    
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    z-index: 100;
+
+    td {
+        padding-top: 0.5em;
+        &:not(:last-child) {
+            padding-right: 0.5em;
+        }
+    }
+
+    .group {
+        margin-top: 0.5em;
+    }
+}
+
+.keyboard-spacer {
+    min-height: 10em;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.align-middle {
+    text-align: center;
+}
+
+.align-right {
+    text-align: right;
 }
 
 .logs {

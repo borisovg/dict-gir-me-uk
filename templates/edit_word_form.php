@@ -1,7 +1,7 @@
 <?php
 
 return <<<HTML
-<form class="form" action="#" ng-controller="editWordCtrl" update>
+<form class="form x-update x-insert-char ng-cloak" action="#">
     <div class="row">
         <div class="col col-sm-2">
             <div class="form-group">

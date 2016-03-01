@@ -6,4 +6,5 @@ data/
 lib/vendor/
 local/
 public/css/*.css
+public/css/fonts/
 public/lib/
