@@ -21,7 +21,7 @@ class Log extends Base {
             $LOG_DATA[] = [
                 'Time' => date('c', $r['timestamp']),
                 'Level' => strtoupper($r['level']),
-                'User' => ($r['user']) ? $r['user'] : '&nbsp;',
+                'User' => ($r['user']) ? $r['user'] : false,
                 'Data' => ($r['data']) ? json_decode($r['data'], true) : false,
                 'RawData' => ($r['data']) ? $r['data'] : ''
             ];
