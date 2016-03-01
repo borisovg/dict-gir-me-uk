@@ -81,8 +81,12 @@ class XeTeX extends Base {
     private function xetex_russian ($w) {
         $WORD_DATA = $this->handler->russian_data($w, $this->genders, $this->types);
 
-        $WORD_DATA['rating'] = ($WORD_DATA['rating']) ? "\mbox{{$WORD_DATA['rating']}}" : '';
-        $WORD_DATA['rigveda'] = ($WORD_DATA['rigveda']) ? "{\small {$WORD_DATA['rigveda']}}" : '';
+        $WORD_DATA['rating'] = ($WORD_DATA['rating']) ? "\\mbox{{$WORD_DATA['rating']}}" : '';
+        $WORD_DATA['rigveda'] = ($WORD_DATA['rigveda']) ? "{\\small {$WORD_DATA['rigveda']}}" : '';
+
+        foreach (['type_r', 'type_s'] as $k) {
+            $WORD_DATA[$k] = ($WORD_DATA[$k]) ? "{\\small \\textit{{$WORD_DATA[$k]}}}" : '';
+        }
 
         $WORD_DATA['russian'] = $w['russian'];
         $WORD_DATA['translit_r'] = $w['translit_r'];

@@ -1,26 +1,49 @@
 <?php
 
-$code = '';
+$code = <<<XELATEX
+% {$WORD_DATA['russian']}
+\\begin{longtable}{
+    >{\\raggedright}p{37mm}@{\\hspace{2mm}}
+    >{\\raggedright}p{24mm}@{\\hspace{2mm}}|
+    p{2mm}
+    >{\\raggedright}p{30mm}@{\\hspace{2mm}}
+    >{\\raggedleft}p{31mm}
+}
+\\textbf{{\\large {$WORD_DATA['r1c1']}\index{{$WORD_DATA['russian']} -- {$WORD_DATA['translit_s']}}}} {$WORD_DATA['type_r']} &
+{\\large {$WORD_DATA['r1c2']}} &&
+{\\large {$WORD_DATA['r1c3']} {$WORD_DATA['type_s']}} &
+{\\Large {$WORD_DATA['r1c4']}}
+\\tabularnewline
 
-$code = sprintf('%% %s', $WORD_DATA['russian']) . "\n";
+XELATEX;
 
-$code .= '\begin{longtable}[l]{>{\hspace{-6pt}\raggedright}p{2cm}>{\raggedright}p{2cm}|>{\raggedright}p{2cm}>{\raggedright}p{2cm}>{\raggedleft}p{\dimexpr\textwidth-8cm-\arrayrulewidth-9\tabcolsep}@{}}' . "\n";
-$code .= sprintf('\textbf{{\large %s\index{%s / %s@%s %s / %s}}} %s &', $WORD_DATA['r1c1'], $WORD_DATA['translit_r'], $WORD_DATA['russian'], $WORD_DATA['translit_r'], $WORD_DATA['russian'], $WORD_DATA['translit_s'], $WORD_DATA['type_r']) . "\n";
-$code .= sprintf('{\large %s} &', $WORD_DATA['r1c2']) . "\n";
-$code .= sprintf('{\large %s} %s &', $WORD_DATA['r1c3'], $WORD_DATA['type_s']) . "\n";
-$code .= sprintf('{\large %s} &', $WORD_DATA['r1c4']) . "\n";
-$code .= sprintf('{\Large %s}\tabularnewline', $WORD_DATA['r1c5']) . "\n";
-
-// verbs have an extra row
 if (isset ($WORD_DATA['r2c1'])) {
-    $code .= sprintf('{\large %s} & {\large %s} & {\large %s} & {\large %s} & {\Large %s}\tabularnewline', $WORD_DATA['r2c1'], $WORD_DATA['r2c2'], $WORD_DATA['r2c3'], $WORD_DATA['r2c4'], $WORD_DATA['r2c5']) . "\n";
+    $code .= <<<XELATEX
+{\\large {$WORD_DATA['r2c1']}} &
+{\\large {$WORD_DATA['r2c2']}} &&
+{\\large {$WORD_DATA['r2c3']}} &
+{\\Large {$WORD_DATA['r2c4']}}
+\\tabularnewline
+
+XELATEX;
 }
 
-$code .= sprintf('\multicolumn{2}{>{\hspace{-6pt}\raggedright}p{\dimexpr 4cm+3\tabcolsep}@{}|}{\textit{{\small %s}}} &', $WORD_DATA['r3c1']) . "\n";
-$code .= sprintf('\multicolumn{2}{>{\raggedright}p{\dimexpr\textwidth-9cm-\arrayrulewidth-7\tabcolsep}@{}}{\textit{{\small %s}}%s}', $WORD_DATA['r3c3'], $WORD_DATA['rigveda']) . "\n";
-$code .= '\end{longtable}' . "\n";
+$code .= <<<XELATEX
+\\multicolumn{2}{
+    >{\\RaggedRight}p{63mm}@{\\hspace{2mm}}|
+}
+{\\textit{{\\small {$WORD_DATA['r3c1']}}}} &
+\multicolumn{1}{ c }{} &
+\multicolumn{2}{
+    >{\\RaggedRight}p{63mm}
+}
+{\\textit{{\\small {$WORD_DATA['r3c3']} {$WORD_DATA['rigveda']}}}}
+\\tabularnewline
+\\end{longtable}
 
-$code .= sprintf('\setlength{\parindent}{0cm} %s\\\\', $WORD_DATA['r4c1']) . "\n";
+\\setlength{\\parindent}{0cm} {$WORD_DATA['r4c1']}\\\\
+
+XELATEX;
 
 $a = [];
 foreach (['cognates_r', 'source_r', 'rating'] as $k) {
