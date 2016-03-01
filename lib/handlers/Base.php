@@ -8,10 +8,10 @@ class Base {
     protected static function check_auth ($admin = false) {
         if (!Auth::isAuthenticated()) {
             header('Location: /login/');
-        }
+            exit;
 
-        if ($admin && !Auth::isAdmin()) {
-            header('Location: /login/');
+        } else if ($admin && !Auth::isAdmin()) {
+            self::http_error(403, 'Forbidden');
         }
     }
 
