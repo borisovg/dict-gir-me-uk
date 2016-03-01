@@ -58,20 +58,20 @@ return <<<HTML
     <div class="row">
         <div class="col col-sm-2">
             <div class="form-group">
-                <label class="control-label" for="devanagari_rus">Transliteration 1</label>
-                <input class="form-control" type="text" name="devanagari_rus" ng-model="word.devanagari_rus">
+                <label class="control-label" for="alt_translit_r">Transliteration 1</label>
+                <input class="form-control" type="text" name="alt_translit_r" ng-model="word.alt_translit_r">
             </div>
         </div>
         <div class="col col-sm-2">
             <div class="form-group">
-                <label class="control-label" for="devanagari_rus_root">&nbsp;</label>
-                <input class="form-control" type="text" name="devanagari_rus_root" ng-model="word.devanagari_rus_root">
+                <label class="control-label" for="alt_translit_r_root">&nbsp;</label>
+                <input class="form-control" type="text" name="alt_translit_r_root" ng-model="word.alt_translit_r_root">
             </div>
         </div>
         <div class="col col-sm-2">
             <div class="form-group">
-                <label class="control-label" for="devanagari_rus_form">&nbsp;</label>
-                <input class="form-control" type="text" name="devanagari_rus_form" ng-model="word.devanagari_rus_form">
+                <label class="control-label" for="alt_translit_r_form">&nbsp;</label>
+                <input class="form-control" type="text" name="alt_translit_r_form" ng-model="word.alt_translit_r_form">
             </div>
         </div>
         <div class="col col-sm-3">
@@ -173,11 +173,11 @@ return <<<HTML
         <div class="col col-sm-8">
             <div class="form-group">
                 <label class="control-label" for="source">Source (Eng)</label>
-                <input class="form-control" type="text" name="source" ng-model="word.source">
+                <textarea class="form-control" name="source" rows="1" ng-model="word.source"></textarea>
             </div>
             <div class="form-group">
                 <label class="control-label" for="source_r">Source (Rus)</label>
-                <input class="form-control" type="text" name="source_r" ng-model="word.source_r">
+                <textarea class="form-control" name="source_r" rows="1" ng-model="word.source_r"></textarea>
             </div>
             <div class="row">
                 <div class="col col-sm-4"></div>
