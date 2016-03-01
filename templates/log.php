@@ -1,5 +1,11 @@
 <?php
 
+set_include_path(ROOT_PATH . '/lib/PEAR/');
+
+require_once 'Horde/Autoloader/Default.php';
+
+$renderer = new Horde_Text_Diff_Renderer_Inline();
+
 $HTML_TITLE = 'Log';
 
 $h = '';
@@ -12,41 +18,54 @@ $HTML_HEADER_NAV = $h;
 $HTML_HEADER = require (ROOT_PATH . '/templates/header.php');
 
 $h = '';
-$h .= '<div class="container-fluid">';
+$h .= '<div class="container-fluid logs">';
 
 if (!empty ($LOG_DATA)) {
-    $h .= '<table class="table">';
-        $h .= '<thead>';
-            $h .= '<tr>';
+    foreach ($LOG_DATA as &$r) {
+        if ($r['Level'] === 'WARN') {
+            $h .= '<p class="warning">';
 
-                foreach ($LOG_DATA[0] as $k => $c) {
-                    $h .= "<th>$k</th>";
-                }
+        } else if ($r['Level'] === 'ERROR') {
+            $h .= '<p class="danger">';
 
-            $h .= '</tr>';       
-        $h .= '</thead>';
-        $h .= '<tbody>';
+        } else {
+            $h .= '<p>';
+        }
 
-            foreach ($LOG_DATA as &$r) {
-                if ($r['Level'] === 'WARN') {
-                    $h .= '<tr class="warning">';
+        //var_dump($r);
 
-                } else if ($r['Level'] === 'ERROR') {
-                    $h .= '<tr class="danger">';
+        $h .= "{$r['Time']}:{$r['Level']}:";
+        if ($r['User']) {
+            $h .= strtoupper("{$r['User']}:");
+        }
+        $h .= strtoupper("{$r['Data']['action']}:: ");
 
-                } else {
-                    $h .= "<tr>";
-                }
+        if ($r['Data']['action'] === 'edit') {
+            if (isset ($r['Data']['word_id'])) {
+               $m = new \Model(); 
+               $w = $m->get_word($r['Data']['word_id']);
 
-                foreach ($r as $c) {
-                    $h .= "<td>$c</td>";
-                }
-                
-                $h .= '</tr>';
+               $h .= "Word: {$w['russian']}, Column: {$r['Data']['column']}";
+
+            } else if (isset ($r['Data']['word'])) {
+               $h .= "Word: {$r['Data']['word']}, Column: {$r['Data']['column']}";
             }
 
-        $h .= '</tbody>';
-    $h .= '</table>';
+            //$h .= "<p>{$r['RawData']}</p>";
+
+            $diff = new Horde_Text_Diff('auto', [
+                explode("\n", $r['Data']['value_before']),
+                explode("\n", $r['Data']['value_after'])
+            ]);
+
+            $h .= '<pre>' . $renderer->render($diff) . "</pre>";
+
+        } else {
+            $h .= $r['RawData'];
+        }
+
+        $h .= '</p>';
+    }
 
 } else {
     $h .= '<p>No data</p>';

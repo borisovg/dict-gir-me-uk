@@ -178,7 +178,7 @@ class Model {
 
         ob_end_clean();
 
-        $log->info(['action' => 'edit', 'word_id' => $id, 'column' => $col, 'value_before' => $w[$col], 'value_after' => $val]);
+        $log->info(['action' => 'edit', 'word' => $w['russian'], 'column' => $col, 'value_before' => $w[$col], 'value_after' => $val]);
 
         return $r;
     }
