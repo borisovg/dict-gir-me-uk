@@ -4,10 +4,7 @@ $HTML_TITLE = $this->word['russian'];
 
 $h = '';
 $h .= '<ul class="nav navbar-nav navbar-right">';
-    if (\Auth::isAdmin()) {
-        $h .= '<li><a href="/">Index</a></li>';
-        $h .= '<li><a href="/new/">New Word</a></li>';
-    }
+    $h .= '<li><a href="/">Index</a></li>';
     $h .= '<li><a href="/search/">Search</a></li>';    
     $h .= '<li><a href="/logout/">Logout</a></li>';    
 $h .= '</ul>';
@@ -31,11 +28,13 @@ $h .= '<div class="container">';
                 $h .= '<div class="btn-group" role="group">';
                     $h .= '<a class="btn btn-default" href="/words/' . $this->word['id'] . '/edit/">Edit</a>';
                 $h .= '</div>';
+                /* FIXME: Need to add code to delete word
                 if (\Auth::isAdmin()) {
                     $h .= '<div class="btn-group" role="group">';
                         $h .= '<button class="btn btn-default">Delete</button>';
                     $h .= '</div>';
                 }
+                */
             $h .= '</div>';
         $h .= '</form>';
     $h .= '</div>';

@@ -4,10 +4,6 @@ $HTML_TITLE = "Edit Word | {$this->word['russian']}";
 
 $h = '';
 $h .= '<ul class="nav navbar-nav navbar-right">';
-    if (\Auth::isAdmin()) {
-        $h .= '<li><a href="/">Index</a></li>';
-        $h .= '<li><a href="/new/">New Word</a></li>';
-    }
     $h .= '<li><a href="/search/">Search</a></li>';    
     $h .= '<li><a href="/logout/">Logout</a></li>';    
 $h .= '</ul>';

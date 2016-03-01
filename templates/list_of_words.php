@@ -60,11 +60,9 @@ $h .= '<div class="container ng-cloak">';
                         $h .= '</select>';
                     $h .= '</td>';
                     $h .= '<td rowspan=2>';
-                        $h .= '<form>';
-                            $h .= '<input name="ids" type="hidden" ng-value="xids">';
-                            $h .= '<input name="file" type="hidden" xfile>';
-                            $h .= '<button class="btn btn-default" type="submit">XeTex</button>';
-                        $h .= '</form>';
+                        $h .= '<input name="ids" type="hidden" ng-value="xids">';
+                        $h .= '<input name="file" type="hidden" xfile>';
+                        $h .= '<button class="btn btn-default" type="submit">XeTex</button>';
                     $h .= '</td>';
                 }
             $h .= '</tr>';
@@ -78,10 +76,15 @@ $h .= '<div class="container ng-cloak">';
             $h .= '</tr>';
         $h .= '</table>';
     $h .= '</form>';
+$h .= '</div>';
                 
-    $h .= '<div ng-controller="errorCtrl" class="no-print">';
+$h .= '<div class="container ng-cloak">';
+    $h .= '<div class="no-print" ng-controller="errorCtrl">';
         $h .= '<pre class="alert alert-danger alert-dismissible" ng-show="error">{{error}}</pre>';
     $h .= '</div>';
+$h .= '</div>';
+
+$h .= '<div class="container ng-cloak">';
     $h .= '<div ng-controller="wordsCtrl">';
         $h .= '<div class="pull-right no-print">{{wordCount}} {{(wordCount === 1) ? "word" : "words"}}</div>';
         $h .= '<div class="row" ng-repeat="l in letters">';
