@@ -1,15 +1,15 @@
 {
-	"config": {
-			"vendor-dir": "lib/vendor"
-	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "/home/borisov/repos/framework-bits"
-		}
-	],
-	"require": {
-		"borisovg/framework-bits": "dev-master",
-		"torophp/torophp": "dev-master"
-	}
+    "config": {
+        "vendor-dir": "lib/vendor"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "/home/borisov/repos/framework-bits"
+        }
+    ],
+    "require": {
+        "borisovg/framework-bits": "dev-master",
+        "torophp/torophp": "dev-master"
+    }
 }
