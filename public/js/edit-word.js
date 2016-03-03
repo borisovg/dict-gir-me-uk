@@ -304,7 +304,7 @@ angular.module('edit-word', [])
         $scope.symbols = {
             Russian: {
                 а: ['а́', 'а̀', 'а̋', 'а̏'],
-                е: ['е́', 'ѐ', 'е̋', 'е̏'],
+                е: ['е́', 'ѐ', 'е̋', 'е̏', 'ѣ'],
                 и: ['и́', 'ѝ', 'и̋', 'и̏'],
                 о: ['о́', 'о̀', 'о̋', 'о̏'],
                 у: ['у́', 'у̀', 'ӳ', 'у̏'],
@@ -322,7 +322,9 @@ angular.module('edit-word', [])
                 c: ['c̀', 'ć', 'č', 'Č'],
                 d: ['ḍ', 'ð'],
                 h: ['ḥ', 'h̯'],
+                g: ['g̑'],
                 j: ['ǰ', 'ɣ'],
+                k: ['k̑'],
                 l: ['ḷ', 'ḹ', 'l̥', 'l̥'],
                 m: ['m', 'ṁ', 'm̥'],
                 n: ['ñ', 'ṇ', 'n̥'],
@@ -358,7 +360,7 @@ angular.module('edit-word', [])
             });
 
             $($scope.lastInput).focus();
-       };
+        };
 
         classSvc.subscribe(function (list) {
             $scope.$applyAsync(function () {
