@@ -1,13 +1,6 @@
 <?php
 
 $HTML_TITLE = 'Log In';
-
-$h = '';
-$h .= '<ul class="nav navbar-nav navbar-right">';
-    $h .= '<li><a href="/">Home</a></li>';
-$h .= '</ul>';
-$HTML_HEADER_NAV = $h;
-    
 $HTML_HEADER = require (ROOT_PATH . '/templates/header.php');
 
 $h = '';

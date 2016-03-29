@@ -4,9 +4,7 @@ $HTML_TITLE = 'Search';
 
 $h = '';
 $h .= '<ul class="nav navbar-nav navbar-right">';
-    if ($_SERVER['REQUEST_URI'] !== '/') {
-        $h .= '<li><a href="/">Home</a></li>';    
-    }
+    $h .= '<li><a href="/">Index</a></li>';    
 
     if (\Auth::isAuthenticated()) {
         $h .= '<li><a href="/logout/">Logout</a></li>';    

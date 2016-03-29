@@ -17,7 +17,7 @@ ToroHook::add('404',  function () {
 try {
     // Router
     Toro::serve([
-        '/' => 'handlers\Home',
+        '/' => 'handlers\ListOfWords',
         '/api/classes' => 'handlers\api\ListOfClasses',
         '/api/genders' => 'handlers\api\ListOfGenders',
         '/api/letters' => 'handlers\api\ListOfLetters',
