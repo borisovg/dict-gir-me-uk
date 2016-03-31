@@ -26,7 +26,7 @@ $h .= '</div>';
 $HTML_BODY = $h;
 
 $A_HTML_JS = [
-    '/lib/angular/angular.js',
+    '/lib/angular/angular.min.js',
     '/lib/jquery/dist/jquery.min.js',
     '/lib/bootstrap/dist/js/bootstrap.min.js',
     '/js/edit-word.js'
