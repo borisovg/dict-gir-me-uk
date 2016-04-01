@@ -171,8 +171,12 @@ angular.module('edit-word', [])
         'use strict';
 
         function _resize (el) {
+            var s = $(window).scrollTop();
+
             el.style.height = 'auto';
             el.style.height = el.scrollHeight + 4 + 'px';
+
+            $(window).scrollTop(s);
         }
 
         return {
