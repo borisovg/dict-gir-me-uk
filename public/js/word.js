@@ -1,7 +1,7 @@
 /*jshint browser:true, jquery: true*/
 /*globals angular*/
 
-angular.module('word', ['svc.sub'])
+angular.module('word', ['cfg.noDebug', 'svc.sub'])
     .service('fileSvc', ['idSvc', 'langSvc', 'subSvc', function (idSvc, langSvc, subSvc) {
         'use strict';
 

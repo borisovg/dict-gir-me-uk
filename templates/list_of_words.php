@@ -105,6 +105,7 @@ $A_HTML_JS = [
     '/lib/angular/angular.min.js',
     '/lib/jquery/dist/jquery.min.js',
     '/lib/bootstrap/dist/js/bootstrap.min.js',
+    '/js/cfg_no_debug.js',
     '/js/list.js',
     '/js/svc_sub.js'
 ];

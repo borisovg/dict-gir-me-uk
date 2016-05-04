@@ -1,7 +1,7 @@
 /*jshint browser:true, jquery:true*/
 /*globals angular*/
 
-angular.module('edit-word', [])
+angular.module('edit-word', ['cfg.noDebug'])
     .run (['$rootScope', '$http', function ($rootScope, $http) {
         'use strict';
 

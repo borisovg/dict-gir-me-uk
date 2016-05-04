@@ -1,7 +1,7 @@
 /*jshint browser:true*/
 /*globals angular*/
 
-angular.module('listOfWords', ['svc.sub'])
+angular.module('listOfWords', ['cfg.noDebug', 'svc.sub'])
     .service('filterSvc', ['subSvc', function (subSvc) {
         'use strict';
 

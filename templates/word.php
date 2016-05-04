@@ -69,6 +69,7 @@ $A_HTML_JS = [
 
 if (\Auth::isAdmin()) {
     $A_HTML_JS[] = '/lib/angular/angular.min.js';
+    $A_HTML_JS[] = '/js/cfg_no_debug.js';
     $A_HTML_JS[] = '/js/word.js';
     $A_HTML_JS[] = '/js/svc_sub.js';
 }

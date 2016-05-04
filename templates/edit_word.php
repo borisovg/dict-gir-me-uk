@@ -29,7 +29,8 @@ $A_HTML_JS = [
     '/lib/angular/angular.min.js',
     '/lib/jquery/dist/jquery.min.js',
     '/lib/bootstrap/dist/js/bootstrap.min.js',
-    '/js/edit-word.js'
+    '/js/cfg_no_debug.js',
+    '/js/edit_word.js'
 ];
 
 return require (ROOT_PATH . '/templates/base.php');
