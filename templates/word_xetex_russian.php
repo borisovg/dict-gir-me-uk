@@ -9,9 +9,9 @@ $code = <<<XELATEX
     >{\\raggedright}p{30mm}@{\\hspace{2mm}}
     >{\\raggedleft}p{31mm}
 }
-\\textbf{{\\large {$WORD_DATA['r1c1']}\index{{$WORD_DATA['russian']} -- {$WORD_DATA['translit_s']}}}} {$WORD_DATA['type_r']} &
-{\\large {$WORD_DATA['r1c2']}} &&
-{\\large {$WORD_DATA['r1c3']} {$WORD_DATA['type_s']}} &
+{\\textbf{\\large {$WORD_DATA['r1c1']}\index{{$WORD_DATA['r1c1']} -- {$WORD_DATA['translit_s']}}}} {$WORD_DATA['type_r']} &
+{\\textit{\\large {$WORD_DATA['r1c2']}}} &&
+{\\textit{\\large {$WORD_DATA['r1c3']}} {$WORD_DATA['type_s']}} &
 {\\Large {$WORD_DATA['r1c4']}}
 \\tabularnewline
 
@@ -20,8 +20,8 @@ XELATEX;
 if (isset ($WORD_DATA['r2c1'])) {
     $code .= <<<XELATEX
 {\\large {$WORD_DATA['r2c1']}} &
-{\\large {$WORD_DATA['r2c2']}} &&
-{\\large {$WORD_DATA['r2c3']}} &
+{\\textit{\\large {$WORD_DATA['r2c2']}}} &&
+{\\textit{\\large {$WORD_DATA['r2c3']}}} &
 {\\Large {$WORD_DATA['r2c4']}}
 \\tabularnewline
 
@@ -32,12 +32,12 @@ $code .= <<<XELATEX
 \\multicolumn{2}{
     >{\\RaggedRight}p{63mm}@{\\hspace{2mm}}|
 }
-{\\textit{{\\small {$WORD_DATA['r3c1']}}}} &
+{\\textit{\\small {$WORD_DATA['r3c1']}}} &
 \multicolumn{1}{ c }{} &
 \multicolumn{2}{
     >{\\RaggedRight}p{63mm}
 }
-{\\textit{{\\small {$WORD_DATA['r3c3']} {$WORD_DATA['rigveda']}}}}
+{\\textit{\\small {$WORD_DATA['r3c3']} {$WORD_DATA['rigveda']}}}
 \\tabularnewline
 \\end{longtable}
 
