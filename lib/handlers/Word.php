@@ -97,14 +97,14 @@ class Word extends Base {
     static function russian_data ($w, $g, $t) {
         if ($w['type_r'] == 2) {
             $data['r1c1'] = $w['russian_form'];
-            $data['r1c2'] = $w['alt_translit_r_form'];
+            $data['r1c2'] = $w['transcr_r_form'];
             $data['r1c3'] = $w['sanskrit_form'];
             $data['r1c4'] = $w['devanagari_form'];
             #$data['r1c4'] = $w['translit_form_s2r'];
             #$data['r1c5'] = $w['devanagari_form'];
 
             $data['r2c1'] = $w['russian_root'];
-            $data['r2c2'] = $w['alt_translit_r_root'];
+            $data['r2c2'] = $w['transcr_r_root'];
             $data['r2c3'] = $w['translit_s'];
             $data['r2c4'] = $w['devanagari'];
             #$data['r2c4'] = $w['translit_s2r'];
@@ -120,7 +120,7 @@ class Word extends Base {
 
         } else {
             $data['r1c1'] = $w['russian'];
-            $data['r1c2'] = $w['alt_translit_r'];
+            $data['r1c2'] = $w['proto_form'];
             $data['r1c3'] = $w['translit_s'];
             $data['r1c4'] = $w['devanagari'];
             #$data['r1c4'] = $w['translit_s2r'];
