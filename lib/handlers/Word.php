@@ -64,7 +64,7 @@ class Word extends Base {
             }
 
         } else {
-            $data['r1c3'] = $w['transcr_r'];
+            $data['r1c3'] = $w['proto_form'];
 
             foreach (['r', 's'] as $k) {
                 if ($w["type_$k"] == 1) {

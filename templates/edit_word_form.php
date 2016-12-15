@@ -122,8 +122,8 @@ return <<<HTML
     <div class="row">
         <div class="col col-sm-2">
             <div class="form-group">
-                <label class="control-label" for="transcr_r">Transcription</label>
-                <input class="form-control" type="text" name="transcr_r" ng-model="word.transcr_r">
+                <label class="control-label" for="proto_form">Praslavonic</label>
+                <input class="form-control" type="text" name="proto_form" ng-model="word.proto_form">
             </div>
         </div>
         <div class="col col-sm-2">
@@ -200,10 +200,7 @@ return <<<HTML
     </div>
     <div class="row">
         <div class="col col-sm-2">
-            <div class="form-group">
-                <label class="control-label" for="proto_form">Proto-form</label>
-                <input class="form-control" type="text" name="proto_form" ng-model="word.proto_form">
-            </div>
+            &nbsp;
         </div>
         <div class="col col-sm-7">
             <div class="form-group">
