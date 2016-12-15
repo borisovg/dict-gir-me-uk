@@ -89,8 +89,15 @@ class XeTeX extends Base {
         }
 
         $WORD_DATA['russian'] = $w['russian'];
-        $WORD_DATA['translit_r'] = $w['translit_r'];
-        $WORD_DATA['translit_s'] = $w['translit_s'];
+
+        if ($w['type_r'] == 2) {
+            $WORD_DATA['index1'] = $w['russian_form'];
+            $WORD_DATA['index2'] = $w['sanskrit_form'];
+
+        } else {
+            $WORD_DATA['index1'] = $w['russian'];
+            $WORD_DATA['index2'] = $w['translit_s'];
+        }
 
         return require (ROOT_PATH . '/templates/word_xetex_russian.php');
     }

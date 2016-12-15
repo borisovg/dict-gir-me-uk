@@ -9,7 +9,7 @@ $code = <<<XELATEX
     >{\\raggedright}p{30mm}@{\\hspace{2mm}}
     >{\\raggedleft}p{31mm}
 }
-{\\textbf{\\large {$WORD_DATA['r1c1']}\index{{$WORD_DATA['r1c1']} -- {$WORD_DATA['translit_s']}}}} {$WORD_DATA['type_r']} &
+{\\textbf{\\large {$WORD_DATA['r1c1']}\index{{$WORD_DATA['index1']} -- {$WORD_DATA['index2']}}}} {$WORD_DATA['type_r']} &
 {\\textit{\\large {$WORD_DATA['r1c2']}}} &&
 {\\textit{\\large {$WORD_DATA['r1c3']}} {$WORD_DATA['type_s']}} &
 {\\Large {$WORD_DATA['r1c4']}}
