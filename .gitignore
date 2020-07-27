@@ -3,8 +3,10 @@ bin/
 composer.lock
 config/local_config.php
 data/
+lib/PEAR/
 lib/vendor/
 local/
+node_modules/
 public/css/*.css
 public/css/fonts/
 public/lib/
