@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "devDependencies": {
+    "clean-css-cli": "^4.3.0",
+    "lessc": "^1.0.2"
+  }
+}

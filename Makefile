@@ -1,10 +1,11 @@
-CSS_FILES = $(patsubst %.less, %.css, $(wildcard public/css/*.less))
-WS_FILES = Makefile $(wildcard *.php) $(wildcard inc/*.php) $(wildcard public/css/*.less) $(wildcard public/js/*.js) $(wildcard lib/*.php) $(wildcard lib/handlers/*.php) $(wildcard lib/handlers/api/*.php) $(wildcard lib/templates/*.php) $(wildcard public/*.php)
+CSS_FILES := $(patsubst %.less, %.css, $(wildcard public/css/*.less))
+NM_BIN := ./node_modules/.bin
+WS_FILES := Makefile $(wildcard *.php) $(wildcard inc/*.php) $(wildcard public/css/*.less) $(wildcard public/js/*.js) $(wildcard lib/*.php) $(wildcard lib/handlers/*.php) $(wildcard lib/handlers/api/*.php) $(wildcard lib/templates/*.php) $(wildcard public/*.php)
 
 all: whitespace less
 
 %.css: %.less
-	lessc $< | cleancss -o $@
+	$(NM_BIN)/lessc $< | $(NM_BIN)/cleancss -o $@
 
 less: $(CSS_FILES)
 
