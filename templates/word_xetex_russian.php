@@ -12,7 +12,7 @@ $code = <<<XELATEX
 {\\textbf{\\large {$WORD_DATA['r1c1']}\index{{$WORD_DATA['index1']} -- {$WORD_DATA['index2']}}}} {$WORD_DATA['type_r']} &
 {\\textit{\\large {$WORD_DATA['r1c2']}}} &&
 {\\textit{\\large {$WORD_DATA['r1c3']}} {$WORD_DATA['type_s']}} &
-{\\Large {$WORD_DATA['r1c4']}}
+{\\LARGE {$WORD_DATA['r1c4']}}
 \\tabularnewline
 
 XELATEX;
@@ -22,7 +22,7 @@ if (isset ($WORD_DATA['r2c1'])) {
 {\\large {$WORD_DATA['r2c1']}} &
 {\\textit{\\large {$WORD_DATA['r2c2']}}} &&
 {\\textit{\\large {$WORD_DATA['r2c3']}}} &
-{\\Large {$WORD_DATA['r2c4']}}
+{\\LARGE {$WORD_DATA['r2c4']}}
 \\tabularnewline
 
 XELATEX;
