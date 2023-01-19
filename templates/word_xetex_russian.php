@@ -32,12 +32,12 @@ $code .= <<<XELATEX
 \\multicolumn{2}{
     >{\\RaggedRight}p{63mm}@{\\hspace{2mm}}|
 }
-{\\textit{\\small {$WORD_DATA['r3c1']}}} &
+{\\textit {$WORD_DATA['r3c1']}} &
 \multicolumn{1}{ c }{} &
 \multicolumn{2}{
     >{\\RaggedRight}p{63mm}
 }
-{\\textit{\\small {$WORD_DATA['r3c3']} {$WORD_DATA['rigveda']}}}
+{\\textit {$WORD_DATA['r3c3']} {$WORD_DATA['rigveda']}}
 \\tabularnewline
 \\end{longtable}
 
