@@ -48,7 +48,7 @@ XELATEX;
 $a = [];
 foreach (['cognates_r', 'source_r', 'rating'] as $k) {
     if ($WORD_DATA[$k]) {
-        $a[] = ($k === 'source_r') ? preg_replace('/(.+)(\.)?/', '{[${1}${2}]}', $WORD_DATA[$k]) : $WORD_DATA[$k];
+        $a[] = ($k === 'source_r') ? preg_replace('/^(.+[^.])(\.)?$/', '{[${1}]}${2}', $WORD_DATA[$k]) : $WORD_DATA[$k];
     }
 }
 $code .= implode(' ', $a) . '\\\\[-3pt]' . "\n";
