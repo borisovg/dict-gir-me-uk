@@ -27,7 +27,7 @@ $h = '<table class="word">';
     $h .= '</tr>';
     $h .= '<tr>';
         $h .= "<td colspan=5>";
-            $h .= "{$WORD_DATA['r4c1']}<br>";
+            $h .= "<p>{$WORD_DATA['r4c1']}</p>";
 
             $a = [];
             foreach (['cognates_r', 'source_r', 'rating'] as $k) {

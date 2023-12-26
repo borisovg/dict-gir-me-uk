@@ -161,6 +161,11 @@ class Word extends Base {
 
     private function russian_html () {
         $WORD_DATA = $this->russian_data($this->word, $this->genders, $this->types);
+
+        if ($WORD_DATA['r4c1']) {
+            $WORD_DATA['r4c1'] = str_replace('\\\\', '<br>', $WORD_DATA['r4c1']);
+        }
+
         return require (ROOT_PATH . '/templates/word_html_russian.php');
     }
 }
