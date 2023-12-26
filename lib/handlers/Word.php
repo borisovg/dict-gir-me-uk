@@ -147,7 +147,7 @@ class Word extends Base {
         $data['r4c1'] = $w['comments_rus'];
 
         $data['cognates_r'] = ($w['cognates_r']) ? 'Родств. слова: ' . $w['cognates_r'] : '';
-        $data['rating'] = ($w['score']) ? 'Рейт. ' . $w['score'] . '.' : '';
+        $data['rating'] = ($w['score']) ? 'Рейтинг ' . $w['score'] : '';
         $data['rigveda'] = ($w['rigveda']) ? '(вед.)' : '';
         $data['source_r'] = $w['source_r'];
 

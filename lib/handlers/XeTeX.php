@@ -99,6 +99,10 @@ class XeTeX extends Base {
             $WORD_DATA['index2'] = $w['translit_s'];
         }
 
+        if ($WORD_DATA['r4c1']) {
+            $WORD_DATA['r4c1'] = str_replace('\\\\', '\\par\\smallskip', $WORD_DATA['r4c1']);
+        }
+
         return require (ROOT_PATH . '/templates/word_xetex_russian.php');
     }
 }

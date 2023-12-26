@@ -41,16 +41,24 @@ $code .= <<<XELATEX
 \\tabularnewline
 \\end{longtable}
 
-\\setlength{\\parindent}{0cm} {$WORD_DATA['r4c1']}\\\\
+\\setlength{\\parindent}{0cm} {$WORD_DATA['r4c1']}\\par\\smallskip
 
 XELATEX;
 
 $a = [];
-foreach (['cognates_r', 'source_r', 'rating'] as $k) {
-    if ($WORD_DATA[$k]) {
-        $a[] = ($k === 'source_r') ? preg_replace('/^(.+[^.])(\.)?$/', '{[${1}]}${2}', $WORD_DATA[$k]) : $WORD_DATA[$k];
-    }
+
+if ($WORD_DATA['cognates_r']) {
+    $a[] = $WORD_DATA['cognates_r'] . '\\par\\smallskip';
 }
+
+if ($WORD_DATA['source_r']) {
+    $a[] = preg_replace('/^(.+[^.])(\.)?$/', '{[${1}]}\\par', $WORD_DATA['source_r']);
+}
+
+if ($WORD_DATA['rating']) {
+    $a[] = preg_replace('/([0-9]+)/', '\\textbf {${1}}', $WORD_DATA['rating']);
+}
+
 $code .= implode(' ', $a) . '\\\\[-3pt]' . "\n";
 
 return $code;
